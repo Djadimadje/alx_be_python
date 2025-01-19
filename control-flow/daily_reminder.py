@@ -32,8 +32,7 @@ def main():
         return
 
     # Print the customized reminder
-    print(Reminder)
+    print(reminder)  # Ensure this matches the expected pattern
 
 if __name__ == "__main__":
     main()
-
