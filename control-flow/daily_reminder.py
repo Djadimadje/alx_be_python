@@ -6,33 +6,21 @@ def main():
     priority = input("Priority (high/medium/low): ").strip().lower()
     time_bound = input("Is it time-bound? (yes/no): ").strip().lower()
 
-    # Generate reminder message
-    reminder = f"Reminder: '{task}' is a "
+    # Validate priority input
+    if priority not in ["high", "medium", "low"]:
+        print("Invalid priority level entered. Please try again.")
+        return
 
-    # Match case for priority level
-    match priority:
-        case "high":
-            reminder += "high priority task"
-        case "medium":
-            reminder += "medium priority task"
-        case "low":
-            reminder += "low priority task"
-        case _:
-            reminder = "Invalid priority level entered. Please try again."
-            print(reminder)
-            return
-
-    # Add time sensitivity if applicable
-    if time_bound == "yes":
-        reminder += " that requires immediate attention today!"
-    elif time_bound == "no":
-        reminder += ". Consider completing it when you have free time."
-    else:
+    # Validate time-bound input
+    if time_bound not in ["yes", "no"]:
         print("Invalid input for time-bound. Please enter 'yes' or 'no'.")
         return
 
-    # Print the customized reminder
-    print(reminder)  # Ensure this matches the expected pattern
+    # Construct the reminder message directly in the print statement
+    if time_bound == "yes":
+        print(f"Reminder: '{task}' is a {priority} priority task that requires immediate attention today!")
+    else:
+        print(f"Reminder: '{task}' is a {priority} priority task. Consider completing it when you have free time.")
 
 if __name__ == "__main__":
     main()
