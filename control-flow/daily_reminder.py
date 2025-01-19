@@ -9,16 +9,18 @@ def main():
     # Generate reminder message
     reminder = f"Reminder: '{task}' is a "
 
-    # Conditional statements for priority level
-    if priority == "high":
-        reminder += "high priority task"
-    elif priority == "medium":
-        reminder += "medium priority task"
-    elif priority == "low":
-        reminder += "low priority task"
-    else:
-        print("Invalid priority level entered. Please try again.")
-        return
+    # Match case for priority level
+    match priority:
+        case "high":
+            reminder += "high priority task"
+        case "medium":
+            reminder += "medium priority task"
+        case "low":
+            reminder += "low priority task"
+        case _:
+            reminder = "Invalid priority level entered. Please try again."
+            print(reminder)
+            return
 
     # Add time sensitivity if applicable
     if time_bound == "yes":
